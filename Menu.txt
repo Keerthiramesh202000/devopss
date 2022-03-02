@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EMS
+{
+    internal class Menu
+        
+    {
+        static Customer[] customerList;
+        public void GetCustomers()
+        {
+        
+            int custCount ;
+            Console.WriteLine("Enterv the Employee Count");
+            custCount = Convert.ToInt32(Console.ReadLine());
+
+            customerList = new Customer[custCount];
+
+            CustomerBO obj_custBusiness = new CustomerBO();
+            for (int i = 0; i < customerList.Length; i++)
+            {
+                string customerdetails = Console.ReadLine();
+                Customer newCustomer = obj_custBusiness.CreateCustomer(customerdetails);
+                //if(!customerList.Contains(newCustomer))
+                //{
+                //    customerList[i]= newCustomer;
+                //}
+                if (obj_custBusiness.SearchUser(customerList, newCustomer) == null)
+                {
+
+                }
+                //customerList[i] = obj_custBusiness.CreateCustomer(customerdetails);
+            }
+        }
+    }
+}
